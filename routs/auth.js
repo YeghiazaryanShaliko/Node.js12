@@ -254,7 +254,8 @@ router.patch('/changeScore/:id', async (req, res) => {
         res.send(data)
     } catch (error) {
         res.send({ message: 'Something went wrong' })
-        console.log(error);
+        
+       console.log(error);
     }
 })
 
@@ -273,12 +274,11 @@ router.patch('/changeScore/:id', async (req, res) => {
 //     }
 // })
 
-router.patch('/changeDoing/:userId/:postId', async (req, res) => { // stex piti es im mot grem tvyal pahi posti idn u useri idn
-    const postId = req.params.postId  
-    const userId = req.params.userId 
-    const doing = req.body.doing.find(o => o._id === postId).value // es toxum inqy tvyal useri doingi mech piti gtni im asac posti idn u vercni ira valun
+router.patch('/changeDoing/:id/', async (req, res) => { 
+    const id = req.params.id 
+    const doing = req.body.doing
     try {
-        const data = await User.findOneAndUpdate({ _id: userId }, { $set: { doing: doing } }) // u indz mnuma menak tiv tam u et valuen poxuma just
+        const data = await User.findOneAndUpdate({ _id: id }, { $set: { doing: doing } }) 
         res.send(data)
     } catch (error) {
         res.send({ message: 'Something went wrong' })
@@ -286,20 +286,20 @@ router.patch('/changeDoing/:userId/:postId', async (req, res) => { // stex piti 
     }
 })
 
-router.patch('/changeValue/:id/:id2', async (req, res) => {
-    const id = req.params.id
-    const id2 = req.params.id2
-    const value = req.body.value
-    // const a = await User.findOne({_id: id})
-    try {
-        const data = await User.findOneAndUpdate({ _id: id,  doing:{_id: id2}}, { $set: { doing:{value: value}}}) 
-        // var data = a.doing.find(obj => obj._id === id2);
-        res.send(data)
-    } catch (error) {
-        res.send({ message: 'Something went wrong' })
-        console.log(error);
-    }
-})
+// router.patch('/changeValue/:id/:id2', async (req, res) => {
+//     const id = req.params.id
+//     const id2 = req.params.id2
+//     const value = req.body.value
+//     // const a = await User.findOne({_id: id})
+//     try {
+//         const data = await User.findOneAndUpdate({ _id: id,  doing:{_id: id2}}, { $set: { doing:{value: value}}}) 
+//         // var data = a.doing.find(obj => obj._id === id2);
+//         res.send(data)
+//     } catch (error) {
+//         res.send({ message: 'Something went wrong' })
+//         console.log(error);
+//     }
+// })
 
 
 router.get('/profile', auth, async (req, res) => {
