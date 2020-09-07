@@ -278,7 +278,7 @@ router.patch('/changeDoing/:userId/:postId', async (req, res) => { // stex piti 
     const userId = req.params.userId 
     const doing = req.body.doing.find(o => o._id === postId).value // es toxum inqy tvyal useri doingi mech piti gtni im asac posti idn u vercni ira valun
     try {
-        const data = await User.findOneAndUpdate({ _id: postId }, { $set: { doing: doing } }) // u indz mnuma menak tiv tam u et valuen poxuma just
+        const data = await User.findOneAndUpdate({ _id: userId }, { $set: { doing: doing } }) // u indz mnuma menak tiv tam u et valuen poxuma just
         res.send(data)
     } catch (error) {
         res.send({ message: 'Something went wrong' })
