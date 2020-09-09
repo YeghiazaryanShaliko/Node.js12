@@ -315,7 +315,7 @@ router.get('/profile', auth, async (req, res) => {
 
 router.get('/leaderboard', async (req, res) => {
     try {
-        let points = await User.find({ active: true }).select('userScore date username avatar email').sort('userScore')
+        let points = await User.find({ active: true }).select('userScore date username avatar email doing').sort('userScore')
         res.send(points)
     } catch (error) {
         res.send({ message: 'Something went wrong' })

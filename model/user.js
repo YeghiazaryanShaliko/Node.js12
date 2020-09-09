@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 let setTime = Date.now();
 var d = new Date();
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var months = ["Հունվարին", "Փետրվարին", "Մարտին", "Ապրիլին", "Մայիսին", "Հունիսին", "Հուլիսին", "Օգոստոսին", "Սեպտեմբերին", "Հոկտեմբերին", "Նոյեմբերին", "Դեկտեմբերին"];
 
 const userSchema = new mongoose.Schema({
     username: {
